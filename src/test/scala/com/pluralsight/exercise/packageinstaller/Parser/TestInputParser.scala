@@ -59,5 +59,12 @@ class TestInputParser extends WordSpec {
         assert(splitted(1) == "b")
       }
     }
+
+    "the list is actually empty" should {
+      "succeed" in {
+        val splitted = ",   ,, , ".split(DependenciesListRegEx)
+        assert(splitted.length == 0)
+      }
+    }
   }
 }
