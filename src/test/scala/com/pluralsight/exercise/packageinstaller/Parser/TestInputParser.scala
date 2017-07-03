@@ -103,6 +103,18 @@ class TestInputParser extends WordSpec {
       }
     }
 
+    "given an array of dependencies defining strings with multiple dependencies" should {
+      "return a corresponding list of tuples representing dependencies" in {
+        assert(parseInput(Array("d: b, c", "a: ", "b: a", "c: a")) === List(("b", "d"), ("c", "d"), ("", "a"), ("a", "b"), ("a", "c")))
+      }
+    }
+
+    "given a single element array of dependencies defining strings" should {
+      "return a corresponding list of tuples representing dependencies" in {
+        assert(parseInput(Array("a: ")) === List(("", "a")))
+      }
+    }
+
     "given an array of dependencies defining strings containing invalid input" should {
       "throw an exception" in {
         assertThrows[IllegalArgumentException] {
