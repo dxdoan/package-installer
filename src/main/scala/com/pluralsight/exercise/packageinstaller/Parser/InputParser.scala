@@ -30,4 +30,8 @@ object InputParser {
 
     }
   }
+
+  def parseInput(input: Array[String]) = {
+    (for(packageAndDependencies <- input.toList) yield parsePackageDependencies(packageAndDependencies)).flatten
+  }
 }
