@@ -19,7 +19,7 @@ object InputParser {
     if (splitted.length == 1) {
       List(("", packageName))
     } else {
-      val dependenciesList = splitted(1).split(DependenciesListRegEx)
+      val dependenciesList = splitted(1).split(DependenciesListRegEx).toList
 
       // Still no dependencies
       if (dependenciesList.length == 0) {
