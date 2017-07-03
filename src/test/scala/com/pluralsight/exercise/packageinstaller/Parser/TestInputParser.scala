@@ -1,4 +1,4 @@
-package com.pluralsight.exercise.packageinstaller.Parser
+package com.pluralsight.exercise.packageinstaller.parser
 
 import InputParser._
 
