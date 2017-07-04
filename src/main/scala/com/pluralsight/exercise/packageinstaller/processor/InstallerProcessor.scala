@@ -30,4 +30,10 @@ object InstallerProcessor {
 
     g
   }
+
+  def generateInstallOrder(dependencies: List[(String, String)]) = {
+    val g = buildDAG(dependencies)
+
+    g.topologicalSort.right.toOption.get.toList
+  }
 }
