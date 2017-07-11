@@ -87,10 +87,12 @@ class TestInstallerProcessor extends WordSpec {
 
     "given a disconnected dependency specification with isolated packages" should {
       "generate the right order" in {
-        val orderWithIndex = generateInstallOrder(List(("a", "b"), ("", "a"), ("", "c"))).zipWithIndex
+        val installOrder = generateInstallOrder(List(("a", "b"), ("", "a"), ("", "c")))
+        val orderWithIndex = installOrder.zipWithIndex
         val aIndex = getIndex(orderWithIndex, "a")
         val bIndex = getIndex(orderWithIndex, "b")
         assert(aIndex < bIndex)
+        assert(installOrder.contains("c"))
       }
     }
 

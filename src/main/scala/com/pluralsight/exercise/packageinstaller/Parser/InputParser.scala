@@ -19,13 +19,14 @@ object InputParser {
     if (splitted.length == 1) {
       List(("", packageName))
     } else {
-      val dependenciesList = splitted(1).split(DependenciesListRegEx).toList
+      val dependenciesArr = splitted(1).split(DependenciesListRegEx)
 
       // Still no dependencies
-      if (dependenciesList.length == 0) {
+      if (dependenciesArr.length == 0) {
         List(("", packageName))
       } else {
-        for(dependency <- dependenciesList) yield (dependency, packageName)
+        dependenciesArr(dependenciesArr.length - 1) = dependenciesArr(dependenciesArr.length - 1).trim
+        for(dependency <- dependenciesArr.toList) yield (dependency, packageName)
       }
 
     }
